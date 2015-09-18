@@ -47,7 +47,7 @@ class IKRA_Masonry_Loop{
 			'css_id' => '',
 			'column' => '3',
 			'margin' => '30px',
-			'pagination' => TRUE,
+			'pagination' => true,
 			'query_type' => 'wp', //array, wp, tax
 			'query_array' => array(
 				array(
@@ -60,7 +60,6 @@ class IKRA_Masonry_Loop{
 			'query_wp' => array(
 				'post_type' => array( 'post' ),
 				'posts_per_page' => 10,
-				'ignore_sticky_posts' => 1,
 			),
 			'query_tax' => array(
 				'taxonomy' => 'post_tag', 
@@ -124,15 +123,13 @@ class IKRA_Masonry_Loop{
 		if(class_exists($this->child_php_class)){
 			echo '<div class="'.$this->base_id.' IKML_Column_'.$this->column.'">';
 				echo '<div class="'.$this->base_id.'_inner">';
-					echo '<div class="'.$this->base_id.'_masonry">';
-						if(($this->query_type == 'array') && is_array($this->query_array)){
-							$this->html_loop_array();
-						}elseif(($this->query_type == 'wp') && is_array($this->query_wp)){
-							$this->html_loop_WpQuery();
-						}elseif(($this->query_type == 'tax') && is_array($this->query_tax)){
-							$this->html_loop_TaxQuery();
-						}
-					echo '</div>';
+					if(($this->query_type == 'array') && is_array($this->query_array)){
+						$this->html_loop_array();
+					}elseif(($this->query_type == 'wp') && is_array($this->query_wp)){
+						$this->html_loop_WpQuery();
+					}elseif(($this->query_type == 'tax') && is_array($this->query_tax)){
+						$this->html_loop_TaxQuery();
+					}	
 				echo '</div>';
 			echo '</div>';
 			?>
@@ -162,13 +159,15 @@ class IKRA_Masonry_Loop{
 	 * @return string
 	 */
 	function html_loop_array(){
-		foreach($this->query_array as $array_content){
-			echo '<div class="'.$this->base_id.'_child">';
-				echo '<div class="'.$this->base_id.'_child_inner" style="margin:'.$this->margin.';">';
-					$this->child_php_class_call->html_query_array($array_content);
+		echo '<div class="'.$this->base_id.'_masonry">';
+			foreach($this->query_array as $array_content){
+				echo '<div class="'.$this->base_id.'_child">';
+					echo '<div class="'.$this->base_id.'_child_inner" style="margin:'.$this->margin.';">';
+						$this->child_php_class_call->html_query_array($array_content);
+					echo '</div>';
 				echo '</div>';
-			echo '</div>';
-		}
+			}
+		echo '</div>';
 	}
 	
 	
@@ -189,14 +188,16 @@ class IKRA_Masonry_Loop{
 		$query = new WP_Query( $query_args );
 		
 		if ( $query->have_posts() ) {
-			while ( $query->have_posts() ) { $query->the_post();
-				echo '<div class="'.$this->base_id.'_child">';
-					echo '<div class="'.$this->base_id.'_child_inner" style="margin:'.$this->margin.';">';
-						$this->child_php_class_call->html_query_wp($query);
+			echo '<div class="'.$this->base_id.'_masonry">';
+				while ( $query->have_posts() ) { $query->the_post();
+					echo '<div class="'.$this->base_id.'_child">';
+						echo '<div class="'.$this->base_id.'_child_inner" style="margin:'.$this->margin.';">';
+							$this->child_php_class_call->html_query_wp($query);
+						echo '</div>';
 					echo '</div>';
-				echo '</div>';
-			}	
-			if($this->pagination == true){ $this->pafination(); }
+				}
+			echo '</div>';
+			if($this->pagination == true){ echo $this->pagination($query); }
 		}
 		wp_reset_postdata();
 	}
@@ -212,13 +213,15 @@ class IKRA_Masonry_Loop{
 	function html_loop_TaxQuery(){
 		$terms = get_terms( $this->query_tax['taxonomy'], $this->query_tax['args'] );
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-			foreach ( $terms as $tax_term ) {
-				echo '<div class="'.$this->base_id.'_child">';
-					echo '<div class="'.$this->base_id.'_child_inner" style="margin:'.$this->margin.';">';
-						$this->child_php_class_call->html_query_tax($tax_term);
+			echo '<div class="'.$this->base_id.'_masonry">';
+				foreach ( $terms as $tax_term ) {
+					echo '<div class="'.$this->base_id.'_child">';
+						echo '<div class="'.$this->base_id.'_child_inner" style="margin:'.$this->margin.';">';
+							$this->child_php_class_call->html_query_tax($tax_term);
+						echo '</div>';
 					echo '</div>';
-				echo '</div>';
-			} 
+				}
+			echo '</div>';
 		}
 	}
 	
@@ -294,9 +297,7 @@ class IKRA_Masonry_Loop{
 	 * @param string Array
 	 * @return string
 	 */
-	function pafination(){
-		global $wp_query; 
-		$query = $wp_query;
+	function pagination($query){
 		$output = null;
 		
 		if ($query->max_num_pages > 1) {

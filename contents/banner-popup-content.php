@@ -83,21 +83,27 @@ class IKRA_Banner_Popup_content{
 		$image_h = ($content['img_h'] != '' ? $content['img_h'] : $this->settings['img_h']);
 		
 		$image = ikra_image($content['image'], $image_w, $image_h, $content['img_placeholder']);
+		
+		$href = $this->base_id.'_ikbpc_'.rand();
 		?>
         <div class="<?php echo $this->base_id; ?> <?php echo $this->d_class; ?> <?php echo $this->settings['css_class']; ?>">
         
         	<div class="IKBPC_image">
-            	<a href="<?php echo $content['link']; ?>">
+            	<a href="#<?php echo $href; ?>" class="ikra_magnificPopup_inline">
             		<img src="<?php echo $image; ?>" alt="<?php echo $content['title']; ?>" height="<?php echo $image_h; ?>" width="<?php echo $image_w; ?>" />
                 </a>
-				<a href="<?php echo $content['link']; ?>" class="IKBPC_caption"><?php echo $content['title']; ?></a>
+				<a href="#<?php echo $href; ?>" class="IKBPC_caption ikra_magnificPopup_inline"><?php echo $content['title']; ?></a>
             </div>
             
             <div class="IKBPC_content">
-            	<div class="IKBPC_holder">
-                	 <h4 class="IKBPC_title"><?php echo $content['title']; ?></h4>
-                	 <?php if($content['media'] != NULL): ?><div class="IKBPC_media"><?php echo $content['media']; ?></div><?php endif; ?>
-                     <?php if($content['text'] != NULL): ?><div class="IKBPC_text"><?php echo $content['text']; ?></div><?php endif; ?>
+            	<div class="<?php echo $this->base_id; ?>_holder" id="<?php echo $href; ?>">
+                	
+                	<div class="IKBPC_holder">
+                         <h4 class="IKBPC_title"><?php echo $content['title']; ?></h4>
+                         <?php if($content['media'] != NULL): ?><div class="IKBPC_media ikra_video"><?php echo $content['media']; ?></div><?php endif; ?>
+                         <?php if($content['text'] != NULL): ?><div class="IKBPC_text ikra_video"><?php echo $content['text']; ?></div><?php endif; ?>
+                     </div>
+                     <button title="Close (Esc)" type="button" class="mfp-close">×</button>
                 </div>
             </div>
             
@@ -131,7 +137,7 @@ class IKRA_Banner_Popup_content{
 			'title' => get_the_title(),
 			'media' => get_post_meta(get_the_ID(), 'ikra_ikbpc__media', true),
 			'image' => esc_url( $large_image_url[0] ),
-			'text' => get_the_content(),
+			'text' => apply_filters('the_content', get_the_content()),
 		);
 		$this->html_base($content);
 	}

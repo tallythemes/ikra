@@ -26,6 +26,12 @@
 .IKRA_Masonry_Loop.IKML_Column_7 .IKRA_Masonry_Loop_child{ width:14.2857%; }
 .IKRA_Masonry_Loop.IKML_Column_8 .IKRA_Masonry_Loop_child{ width:12.5%; }
 
+.IKRA_Masonry_Loop .IKRAM_pagenav{ margin-top: 20px; }
+.IKRA_Masonry_Loop .IKRAM_pagenav .page-numbers{ font-size: 12px; padding: 5px 10px; border: solid 2px #8B8B8B; font-weight: normal; line-height: 15px; color: #646464; }
+.IKRA_Masonry_Loop .IKRAM_pagenav .page-numbers.current,
+.IKRA_Masonry_Loop .IKRAM_pagenav .page-numbers:hover{ border-color: #F78E1E; color: #F78E1E; }
+
+
 @media only screen and (max-width: 768px) {
 	.IKRA_Masonry_Loop.IKML_Column_2 .IKRA_Masonry_Loop_child{ width:100%; }
 	.IKRA_Masonry_Loop.IKML_Column_3 .IKRA_Masonry_Loop_child{ width:100%; }
@@ -120,11 +126,35 @@
  *
 **********************************************************************************/
 .IKRA_Banner_Popup_content .IKBPC_image{  }
-.IKRA_Banner_Popup_content .IKBPC_image img{  }
-.IKRA_Banner_Popup_content .IKBPC_caption{  }
+.IKRA_Banner_Popup_content .IKBPC_image img{ width:100%; }
+.IKRA_Banner_Popup_content .IKBPC_caption{ font-size: 13px; text-align: left; display: block; color: inherit; font-weight: 400; }
 
 .IKRA_Banner_Popup_content .IKBPC_content{ display:none; }
-.IKRA_Banner_Popup_content .IKBPC_holder{ }
-.IKRA_Banner_Popup_content .IKBPC_title{ }
-.IKRA_Banner_Popup_content .IKBPC_media{ }
-.IKRA_Banner_Popup_content .IKBPC_text{ }
+
+.IKRA_Banner_Popup_content_holder{ background-color: #fff; width: 100%; max-width: 900px; margin: 0 auto; }
+.IKRA_Banner_Popup_content_holder .mfp-close{
+	color: #FFF;
+    font-size: 50px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    right: 15px;
+    top: 5px;
+	background-color:rgba(0,0,0,0.8);
+}
+.IKRA_Banner_Popup_content_holder .IKBPC_holder{ padding:50px; }
+.IKRA_Banner_Popup_content_holder .IKBPC_title{
+	margin: 0;
+    margin-bottom: 15px;
+    background-color: #F78F1E;
+    display: inline-block;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 22px;
+    font-weight: normal;
+}
+.IKRA_Banner_Popup_content_holder .IKBPC_media{ margin-bottom: 25px; }
+.IKRA_Banner_Popup_content_holder .IKBPC_text{ }
