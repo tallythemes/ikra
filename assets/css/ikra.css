@@ -1,0 +1,130 @@
+/*********************************************************************************
+ * 
+ * Mic
+ * 
+ * @type: other
+ *
+**********************************************************************************/
+.IKRA_clear{ width:100%; clear:both; height:1px; margin:0; padding:0; }
+
+
+
+/*********************************************************************************
+ * 
+ * Masonry Loop
+ * 
+ * @type: Loop
+ *
+**********************************************************************************/
+.IKRA_Masonry_Loop{  }
+.IKRA_Masonry_Loop.IKML_Column_1 .IKRA_Masonry_Loop_child{ width:100%; }
+.IKRA_Masonry_Loop.IKML_Column_2 .IKRA_Masonry_Loop_child{ width:50%; }
+.IKRA_Masonry_Loop.IKML_Column_3 .IKRA_Masonry_Loop_child{ width:33.3333%; }
+.IKRA_Masonry_Loop.IKML_Column_4 .IKRA_Masonry_Loop_child{ width:25%; }
+.IKRA_Masonry_Loop.IKML_Column_5 .IKRA_Masonry_Loop_child{ width:20%; }
+.IKRA_Masonry_Loop.IKML_Column_6 .IKRA_Masonry_Loop_child{ width:16.6666%; }
+.IKRA_Masonry_Loop.IKML_Column_7 .IKRA_Masonry_Loop_child{ width:14.2857%; }
+.IKRA_Masonry_Loop.IKML_Column_8 .IKRA_Masonry_Loop_child{ width:12.5%; }
+
+@media only screen and (max-width: 768px) {
+	.IKRA_Masonry_Loop.IKML_Column_2 .IKRA_Masonry_Loop_child{ width:100%; }
+	.IKRA_Masonry_Loop.IKML_Column_3 .IKRA_Masonry_Loop_child{ width:100%; }
+	.IKRA_Masonry_Loop.IKML_Column_4 .IKRA_Masonry_Loop_child{ width:50%; }
+	.IKRA_Masonry_Loop.IKML_Column_5 .IKRA_Masonry_Loop_child{ width:33.3333%; }
+	.IKRA_Masonry_Loop.IKML_Column_6 .IKRA_Masonry_Loop_child{ width:33.3333%; }
+	.IKRA_Masonry_Loop.IKML_Column_7 .IKRA_Masonry_Loop_child{ width:25%; }
+	.IKRA_Masonry_Loop.IKML_Column_8 .IKRA_Masonry_Loop_child{ width:20%; }
+}
+@media only screen and (max-width: 480px) {
+	.IKRA_Masonry_Loop.IKML_Column_2 .IKRA_Masonry_Loop_child,
+	.IKRA_Masonry_Loop.IKML_Column_3 .IKRA_Masonry_Loop_child,
+	.IKRA_Masonry_Loop.IKML_Column_4 .IKRA_Masonry_Loop_child,
+	.IKRA_Masonry_Loop.IKML_Column_5 .IKRA_Masonry_Loop_child,
+	.IKRA_Masonry_Loop.IKML_Column_6 .IKRA_Masonry_Loop_child,
+	.IKRA_Masonry_Loop.IKML_Column_7 .IKRA_Masonry_Loop_child,
+	.IKRA_Masonry_Loop.IKML_Column_8 .IKRA_Masonry_Loop_child{ width:100%; }
+}
+
+
+
+
+
+/*********************************************************************************
+ * 
+ * BigList Content
+ * 
+ * @type: Content
+ *
+**********************************************************************************/
+.IKRA_BigList_content{  }
+.IKRA_BigList_content_inner{  }
+.IKRA_BigList_content .IKBLC_img{ float: left; margin-right: 30px; }
+.IKRA_BigList_content .IKBLC_img img{  }
+.IKRA_BigList_content .IKBLC_content{ overflow: hidden; }
+.IKRA_BigList_content .IKBLC_title{ font-size: 24px; }
+.IKRA_BigList_content .IKBLC_title a{ color: initial; }
+.IKRA_BigList_content .IKBLC_text{  }
+.IKRA_BigList_content .IKBLC_more{ color: inherit; }
+
+@media only screen and (max-width: 768px) {
+	.IKRA_BigList_content .IKBLC_img { float: none; margin-right: 0; margin-bottom: 25px; }
+}
+
+
+
+
+/*********************************************************************************
+ * 
+ * Banner Content
+ * 
+ * @type: Content
+ *
+**********************************************************************************/
+.IKRA_Banner_content{ position: relative; }
+.IKRA_Banner_content img{ width: 100%; }
+.IKRA_Banner_content_inner{ 
+	position: absolute; 
+    z-index: 1; 
+    margin: auto; 
+    left:0; 
+    height: 100%; 
+    width: 100%; 
+    background-color: rgba(0,0,0,0.5); 
+    opacity:0;
+    
+    transition:All 0.5s linear;
+    -webkit-transition:All 0.5s linear;
+    -moz-transition:All 0.5s linear;
+    -o-transition:All 0.5s linear;
+}
+.IKRA_Banner_content .IKBAC_caption{ height: 100%; text-align: center; }
+.IKRA_Banner_content .IKBAC_caption span { height: 100%; vertical-align: middle; display: inline-block;}
+.IKRA_Banner_content .IKBAC_caption_inner{ margin: 0; vertical-align: middle; display: inline-block; position: relative; width: 80%; text-align: center; }
+
+.IKRA_Banner_content .IKBAC_title{ color: #fff; font-size: 20px; line-height: 26px; }
+.IKRA_Banner_content .IKBAC_title a{ color: #fff !important; }
+.IKRA_Banner_content .IKBAC_title a:hover{ text-decoration: none; }
+.IKRA_Banner_content .IKBAC_subtitle{ color: #fff; }
+.IKRA_Banner_content .IKBAC_text{ color: #fff; }
+.IKRA_Banner_content .IKBAC_more{ color: #fff; border:solid 2px #fff; padding:10px 20px; }
+
+.IKRA_Banner_content:hover .IKRA_Banner_content_inner{ opacity:1; }
+
+
+
+/*********************************************************************************
+ * 
+ * Banner Popup Content
+ * 
+ * @type: Content
+ *
+**********************************************************************************/
+.IKRA_Banner_Popup_content .IKBPC_image{  }
+.IKRA_Banner_Popup_content .IKBPC_image img{  }
+.IKRA_Banner_Popup_content .IKBPC_caption{  }
+
+.IKRA_Banner_Popup_content .IKBPC_content{ display:none; }
+.IKRA_Banner_Popup_content .IKBPC_holder{ }
+.IKRA_Banner_Popup_content .IKBPC_title{ }
+.IKRA_Banner_Popup_content .IKBPC_media{ }
+.IKRA_Banner_Popup_content .IKBPC_text{ }
