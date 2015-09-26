@@ -1,4 +1,7 @@
 <?php
+/*
+Version: 1.0
+*/
 $path_dir = trailingslashit(str_replace('\\','/',dirname(__FILE__)));
 $path_abs = trailingslashit(str_replace('\\','/',ABSPATH));
 
